@@ -5,6 +5,7 @@ Library          SeleniumLibrary
 *** Variables ***
 ${username}             standard_user
 ${invalid_password}     secret
+${valid_password}       secret_sauce
 ${url}                  https://www.saucedemo.com/
 
 *** Keywords ***

@@ -2,6 +2,7 @@
 Documentation   this is the first try with robotframework
 Library         SeleniumLibrary
 Resource        resources.robot
+Test Setup      Open the browser with given url
 Test Teardown   Close browser session
 
 
@@ -9,24 +10,25 @@ Test Teardown   Close browser session
 ${error_message_text}            css:.error-message-container
 *** Test Cases ***
 Validate Unsuccessful login
-    Open the browser with given url
-    Fill the login form
-    Wait until it checks and display error message
+    Fill the login form         ${username}     ${invalid_password}
+    Wait until element is located in the page    ${error_message_text}
     Verify error message is correct
 
-*** Keywords ***
-#Open the browser with given url
-#    create webdriver    Chrome  executable_path=/Users/shah/PycharmProjects/pythonProject/rf-selenium/drivers/chromedriver
-#    go to    https://www.saucedemo.com/
+Validate successful login
+    Fill the login form    ${username}  ${valid_password}
+    wait until element is located in the page    css:.title
 
+*** Keywords ***
 Fill the login form
+    [Arguments]    ${username}    ${password}
     input text      id:user-name  ${username}
-    input text      id:password   ${invalid_password}
+    input text      id:password   ${password}
     click button    id:login-button
 
 
-Wait until it checks and display error message
-    wait until element is visible    ${error_message_text}
+Wait until element is located in the page
+    [Arguments]    ${element}
+    wait until element is visible    ${element}
 
 Verify error message is correct
     ${error_text}=  get text      ${error_message_text}
