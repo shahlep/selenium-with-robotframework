@@ -4,7 +4,7 @@ Library         SeleniumLibrary
 Library         Collections
 Resource        resources.robot
 Test Setup      Open the browser with given url
-Test Teardown   Close browser session
+#Test Teardown   Close browser session
 
 
 *** Variables ***
@@ -20,6 +20,7 @@ Validate successful login
     Fill the login form    ${username}  ${valid_password}
     Wait until element is located in the page       ${inventory_title_text}
     Verify Card title in the inventory page
+    Select the Card and add to the cart     Sauce Labs Onesie
 
 *** Keywords ***
 Fill the login form
@@ -47,3 +48,15 @@ Verify Card title in the inventory page
         append to list    ${actuallist}     ${element.text}
     END
     lists should be equal    ${itemlist}    ${actuallist}
+
+Select the Card and add to the cart
+    [Arguments]    ${cardname}
+    log    ${cardname}
+    ${elements}=    get webelements    css:.inventory_item_name
+    ${index}=   set variable    1
+    FOR     ${element}      IN    @{elements}
+        exit for loop if    '${cardname}' == '${element.text}'
+                ${index}=   evaluate    ${index} + 1
+    END
+
+    click button    xpath:(//*[contains(text(),'Add to cart')][1])[${index}]
