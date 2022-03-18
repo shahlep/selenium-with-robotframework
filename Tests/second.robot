@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation   this is the first try with robotframework
 Library         SeleniumLibrary
+Library         Collections
 Resource        resources.robot
 Test Setup      Open the browser with given url
 Test Teardown   Close browser session
@@ -40,6 +41,9 @@ Verify error message is correct
 Verify Card title in the inventory page
     @{itemlist}=    create list     Sauce Labs Backpack     Sauce Labs Bike Light       Sauce Labs Bolt T-Shirt     Sauce Labs Fleece Jacket    Sauce Labs Onesie   Test.allTheThings() T-Shirt (Red)
     ${elements}=    get webelements    css:.inventory_item_name
+    @{actuallist}=  create list
     FOR    ${element}   IN    @{elements}
         log    ${element.text}
+        append to list    ${actuallist}     ${element.text}
     END
+    lists should be equal    ${itemlist}    ${actuallist}
