@@ -1,9 +1,10 @@
 *** Settings ***
 Documentation   this is the first try with robotframework
 Library    SeleniumLibrary
+Test Teardown       Close Browser
 
 *** Variables ***
-
+${error_message_text}            css:.error-message-container
 *** Test Cases ***
 Validate Unsuccessful login
     Open the browser with given url
@@ -23,8 +24,8 @@ Fill the login form
 
 
 Wait until it checks and display error message
-    wait until element is visible    css:.error-message-container
+    wait until element is visible    ${error_message_text}
 
 Verify error message is correct
-    ${error_text}=  get text    css:.error-message-container
+    ${error_text}=  get text    ${error_message_text}
     should be equal as strings    ${error_text}     Epic sadface: Username and password do not match any user in this service
