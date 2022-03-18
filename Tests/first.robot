@@ -1,7 +1,9 @@
 *** Settings ***
 Documentation   this is the first try with robotframework
-Library    SeleniumLibrary
-Test Teardown       Close Browser
+Library         SeleniumLibrary
+Resource        resources.robot
+Test Teardown   Close browser session
+
 
 *** Variables ***
 ${error_message_text}            css:.error-message-container
@@ -13,13 +15,13 @@ Validate Unsuccessful login
     Verify error message is correct
 
 *** Keywords ***
-Open the browser with given url
-    create webdriver    Chrome  executable_path=/Users/shah/PycharmProjects/pythonProject/rf-selenium/drivers/chromedriver
-    go to    https://www.saucedemo.com/
+#Open the browser with given url
+#    create webdriver    Chrome  executable_path=/Users/shah/PycharmProjects/pythonProject/rf-selenium/drivers/chromedriver
+#    go to    https://www.saucedemo.com/
 
 Fill the login form
-    input text      id:user-name  standard_user
-    input password  id:password   secret
+    input text      id:user-name  ${username}
+    input password  id:password   ${invalid_password}
     click button    id:login-button
 
 
