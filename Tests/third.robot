@@ -10,17 +10,19 @@ Test Teardown   Close browser session
 *** Variables ***
 
 *** Test Cases ***
-Validate Unsuccessful login
-    Open the browser with given url for select fun
-    Fill the login form         ${username}     ${password}
+Fill up and select login form
+    #Open the browser with given url for select fun
+    Fill the login form         ${uname}     ${password}
 
 
 *** Keywords ***
 
 Fill the login form
-    [Arguments]    ${username}      ${password}
-    input text      id:username  ${username}
+    [Arguments]    ${uname}      ${password}
+    input text      id:username  ${uname}
     input text      id:password   ${password}
     click button    id:signInBtn
+    select from list by value    css:select.form-control    teach
+
 
 

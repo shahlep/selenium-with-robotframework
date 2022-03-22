@@ -8,7 +8,7 @@ ${invalid_password}     secret
 ${valid_password}       secret_sauce
 ${url}                  https://www.saucedemo.com/
 #${url_select}           https://rahulshettyacademy.com/loginpagePractise
-${username}             rahulshettyacademy
+${uname}                 rahulshettyacademy
 ${password}             learning
 
 *** Keywords ***
