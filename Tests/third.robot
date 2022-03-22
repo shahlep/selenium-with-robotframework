@@ -21,8 +21,12 @@ Fill the login form
     [Arguments]    ${uname}      ${password}
     input text      id:username  ${uname}
     input text      id:password   ${password}
-    click button    id:signInBtn
+    click element   css:input[value='user']
+    wait until element is visible   id:okayBtn
+    click button    id:okayBtn
     select from list by value    css:select.form-control    teach
+    click element    id:terms
+    click button    id:signInBtn
 
 
 
