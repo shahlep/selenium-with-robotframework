@@ -25,7 +25,9 @@ Fill the login form
     wait until element is visible   id:okayBtn
     click button    id:okayBtn
     select from list by value    css:select.form-control    teach
-    click element    id:terms
+    #click element    id:terms
+    select checkbox    id:terms
+    checkbox should be selected    id:terms
     click button    id:signInBtn
 
 
