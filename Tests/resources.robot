@@ -7,7 +7,7 @@ ${username}             standard_user
 ${invalid_password}     secret
 ${valid_password}       secret_sauce
 ${url}                  https://www.saucedemo.com/
-${url_select}           https://rahulshettyacademy.com/loginpagePractise
+#${url_select}           https://rahulshettyacademy.com/loginpagePractise
 ${username}             rahulshettyacademy
 ${password}             learning
 
@@ -21,4 +21,4 @@ Close browser session
 
 Open the browser with given url for select fun
     create webdriver    Chrome  executable_path=/Users/shah/PycharmProjects/pythonProject/rf-selenium/drivers/chromedriver
-    go to    ${url_select}}
+    go to               https://rahulshettyacademy.com/loginpagePractise/
