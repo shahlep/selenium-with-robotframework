@@ -7,7 +7,9 @@ ${username}             standard_user
 ${invalid_password}     secret
 ${valid_password}       secret_sauce
 ${url}                  https://www.saucedemo.com/
-${url_select}           https://rahulshettyacademy.com/loginpagePractise/
+${url_select}           https://rahulshettyacademy.com/loginpagePractise
+${username}             rahulshettyacademy
+${password}             learning
 
 *** Keywords ***
 Open the browser with given url

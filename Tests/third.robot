@@ -11,15 +11,16 @@ Test Teardown   Close browser session
 
 *** Test Cases ***
 Validate Unsuccessful login
-    Open the browser with given url
-    Fill the login form
+    Open the browser with given url for select fun
+    Fill the login form         ${username}     ${password}
 
 
 *** Keywords ***
 
 Fill the login form
-    input text      id:user-name  ${username}
-    input text      id:password   ${invalid_password}
-    click button    id:login-button
+    [Arguments]    ${username}      ${password}
+    input text      id:username  ${username}
+    input text      id:password   ${password}
+    click button    id:signInBtn
 
 
